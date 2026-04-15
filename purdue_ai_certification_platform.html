@@ -1,0 +1,855 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#CFB991;--gold-dark:#8E6F3E;--gold-deep:#5C4A1E;
+  --black:#1a1a1a;--black-mid:#2c2c2c;--black-soft:#3a3a3a;
+  --gold-bg:#fdf8ee;--gold-bg2:#f5eed8;
+}
+body{font-family:var(--font-sans);background:var(--color-background-tertiary);color:var(--color-text-primary)}
+
+.site-header{background:var(--black);padding:0 2rem;border-bottom:2px solid var(--gold)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:38px;height:38px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:500;font-size:14px;color:var(--black)}
+.logo-text{font-size:15px;font-weight:500;color:#fff}
+.logo-sub{font-size:11px;color:rgba(207,185,145,0.7)}
+.header-nav{display:flex;gap:4px;align-items:center}
+.header-nav a{font-size:13px;padding:6px 12px;border-radius:6px;color:rgba(255,255,255,0.7);cursor:pointer;text-decoration:none;transition:all 0.15s}
+.header-nav a:hover{color:#fff;background:rgba(207,185,145,0.15)}
+.header-nav a.active{color:var(--gold);font-weight:500}
+.header-badge{background:var(--gold);color:var(--black);font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;cursor:pointer}
+
+.hero{background:var(--black);padding:3.5rem 2rem;border-bottom:1px solid rgba(207,185,145,0.2)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(207,185,145,0.12);border:0.5px solid rgba(207,185,145,0.3);color:var(--gold);font-size:11px;font-weight:500;padding:5px 12px;border-radius:20px;margin-bottom:1.25rem;letter-spacing:0.04em}
+.hero h1{font-size:32px;font-weight:500;line-height:1.25;color:#fff;margin-bottom:1rem}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:1.75rem}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--black);border:none;padding:11px 22px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid rgba(207,185,145,0.4);padding:11px 22px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer}
+.hero-right{display:flex;flex-direction:column;gap:12px}
+.cert-preview{background:var(--black-mid);border:1px solid rgba(207,185,145,0.25);border-radius:12px;padding:1.25rem}
+.cert-top{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:1rem;border-bottom:0.5px solid rgba(207,185,145,0.15)}
+.cert-icon{width:40px;height:40px;border-radius:8px;background:rgba(207,185,145,0.15);display:flex;align-items:center;justify-content:center;font-size:18px}
+.cert-title{font-size:14px;font-weight:500;color:#fff}
+.cert-sub{font-size:12px;color:rgba(207,185,145,0.6)}
+.cert-tracks{display:flex;gap:8px;flex-wrap:wrap}
+.track-pill{background:rgba(207,185,145,0.1);border:0.5px solid rgba(207,185,145,0.25);color:var(--gold);font-size:12px;padding:4px 10px;border-radius:20px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hstat{background:var(--black-mid);border:0.5px solid rgba(207,185,145,0.2);border-radius:8px;padding:12px;text-align:center}
+.hstat-n{font-size:20px;font-weight:500;color:var(--gold)}
+.hstat-l{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
+
+.main{max-width:1200px;margin:0 auto;padding:2rem}
+.section-eyebrow{font-size:11px;font-weight:500;color:var(--gold-dark);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px}
+.section-title{font-size:20px;font-weight:500;margin-bottom:4px}
+.section-sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.5rem}
+
+.audience-tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.aud-tab{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid rgba(207,185,145,0.3);color:var(--color-text-secondary);background:var(--color-background-primary);transition:all 0.15s}
+.aud-tab:hover{border-color:var(--gold-dark);color:var(--gold-dark)}
+.aud-tab.active{background:var(--gold-dark);color:#fff;border-color:var(--gold-dark)}
+
+.renewal-banner{background:var(--black);border:1px solid rgba(207,185,145,0.25);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:gap}
+.renewal-left{display:flex;align-items:center;gap:12px}
+.renewal-icon{width:40px;height:40px;border-radius:8px;background:rgba(207,185,145,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.renewal-text h3{font-size:14px;font-weight:500;color:#fff}
+.renewal-text p{font-size:13px;color:rgba(255,255,255,0.5);margin-top:2px}
+.renewal-badge{background:var(--gold);color:var(--black);font-size:12px;font-weight:500;padding:6px 14px;border-radius:6px;white-space:nowrap;cursor:pointer}
+
+.progress-bar-wrap{background:var(--color-background-secondary);border-radius:8px;padding:1rem 1.25rem;margin-bottom:2rem;border:0.5px solid var(--color-border-tertiary)}
+.pb-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pb-label{font-size:13px;font-weight:500}
+.pb-pct{font-size:13px;color:var(--gold-dark);font-weight:500}
+.pb-track{height:6px;background:var(--color-border-tertiary);border-radius:3px;margin-bottom:10px}
+.pb-fill{height:6px;background:var(--gold-dark);border-radius:3px;transition:width 0.4s}
+.pb-modules{display:flex;gap:6px;flex-wrap:wrap}
+.pb-mod{font-size:11px;padding:3px 8px;border-radius:20px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary)}
+.pb-mod.done{background:#EAF3DE;border-color:#97C459;color:#27500A}
+
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;margin-bottom:2rem}
+.module-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color 0.15s}
+.module-card:hover{border-color:var(--gold-dark)}
+.module-card.active{border:1.5px solid var(--gold-dark)}
+.module-card.done .mc-status{background:#EAF3DE;color:#27500A}
+.mc-top{padding:1.25rem;display:flex;gap:12px;align-items:flex-start}
+.mc-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:#f5eed8}
+.mc-num{font-size:11px;color:var(--color-text-tertiary);margin-bottom:3px}
+.mc-title{font-size:15px;font-weight:500;margin-bottom:4px}
+.mc-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.5}
+.mc-footer{border-top:0.5px solid var(--color-border-tertiary);padding:10px 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.mc-status{font-size:11px;padding:3px 8px;border-radius:20px;background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.mc-link{font-size:12px;color:var(--gold-dark);font-weight:500}
+
+.panel{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;margin-bottom:2rem;display:none}
+.panel.visible{display:block}
+.panel-hero{background:var(--black);border-radius:12px 12px 0 0;padding:1.5rem 2rem;display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold-dark)}
+.ph-icon{width:50px;height:50px;border-radius:12px;background:rgba(207,185,145,0.15);display:flex;align-items:center;justify-content:center;font-size:22px}
+.ph-title{font-size:20px;font-weight:500;color:#fff}
+.ph-sub{font-size:13px;color:rgba(207,185,145,0.7);margin-top:3px}
+.panel-body{padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.ps{} 
+.ps h3{font-size:14px;font-weight:500;margin-bottom:10px;padding-bottom:6px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.ps p{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:10px}
+.ilist{list-style:none}
+.ilist li{display:flex;gap:8px;font-size:13px;color:var(--color-text-secondary);padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);line-height:1.5;align-items:flex-start}
+.ilist li:last-child{border:none}
+.ilist li .ic{flex-shrink:0;margin-top:1px;font-size:14px}
+.fullcol{grid-column:1/-1}
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.do-box{background:#EAF3DE;border-radius:8px;padding:1rem}
+.do-box h4{font-size:13px;font-weight:500;color:#27500A;margin-bottom:8px}
+.ditem{font-size:12px;color:#3B6D11;padding:3px 0;display:flex;gap:6px;line-height:1.5}
+.dont-box{background:#FCEBEB;border-radius:8px;padding:1rem}
+.dont-box h4{font-size:13px;font-weight:500;color:#791F1F;margin-bottom:8px}
+.xitem{font-size:12px;color:#A32D2D;padding:3px 0;display:flex;gap:6px;line-height:1.5}
+.policy-block{background:var(--black);border-left:3px solid var(--gold-dark);border-radius:0 8px 8px 0;padding:1rem 1.25rem}
+.policy-block h4{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:4px}
+.policy-block p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+.scenario-box{background:#fdf8ee;border:1px solid rgba(142,111,62,0.2);border-radius:8px;padding:1rem}
+.scenario-box h4{font-size:13px;font-weight:500;color:var(--gold-deep);margin-bottom:6px}
+.scenario-box p{font-size:13px;color:var(--gold-deep);line-height:1.6}
+
+.quiz-wrap{background:var(--color-background-secondary);border-radius:8px;padding:1.25rem}
+.quiz-q{font-size:14px;font-weight:500;margin-bottom:12px;line-height:1.5}
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.qopt{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:10px 14px;font-size:13px;cursor:pointer;text-align:left;color:var(--color-text-primary);transition:all 0.15s}
+.qopt:hover:not(:disabled){border-color:var(--gold-dark);color:var(--gold-dark)}
+.qopt.correct{background:#EAF3DE;border-color:#639922;color:#27500A}
+.qopt.wrong{background:#FCEBEB;border-color:#E24B4A;color:#791F1F}
+.qfb{margin-top:10px;font-size:13px;padding:10px;border-radius:8px;display:none;line-height:1.5}
+.qfb.show{display:block}
+.qfb.ok{background:#EAF3DE;color:#27500A}
+.qfb.bad{background:#FCEBEB;color:#791F1F}
+
+.cert-section{background:var(--black);border-radius:12px;padding:2rem;margin-bottom:2rem;border:1px solid rgba(207,185,145,0.2)}
+.cert-section h2{font-size:18px;font-weight:500;color:#fff;margin-bottom:4px}
+.cert-section .sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}
+.cert-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cert-card{background:var(--black-mid);border:0.5px solid rgba(207,185,145,0.2);border-radius:10px;padding:1.25rem;cursor:pointer;transition:border-color 0.15s}
+.cert-card:hover{border-color:var(--gold)}
+.cert-card.featured{border:1.5px solid var(--gold)}
+.cc-badge{font-size:11px;font-weight:500;padding:3px 8px;border-radius:20px;background:rgba(207,185,145,0.15);color:var(--gold);margin-bottom:10px;display:inline-block}
+.cc-featured-badge{font-size:11px;font-weight:500;padding:3px 8px;border-radius:20px;background:var(--gold);color:var(--black);margin-bottom:10px;display:inline-block}
+.cc-icon{font-size:28px;margin-bottom:10px}
+.cc-title{font-size:15px;font-weight:500;color:#fff;margin-bottom:6px}
+.cc-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:12px}
+.cc-modules{font-size:12px;color:rgba(207,185,145,0.6)}
+.cc-modules span{color:var(--gold)}
+.cc-renewal{margin-top:8px;font-size:11px;color:rgba(207,185,145,0.5);border-top:0.5px solid rgba(207,185,145,0.1);padding-top:8px}
+
+.resources-section{margin-bottom:2rem}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.res-pill{display:flex;align-items:center;gap:8px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:8px;padding:10px 14px;font-size:13px;cursor:pointer;text-decoration:none;color:var(--color-text-primary);transition:border-color 0.15s}
+.res-pill:hover{border-color:var(--gold-dark)}
+.res-pill .ri{font-size:14px;flex-shrink:0}
+
+.footer{background:var(--black);padding:2rem;border-top:2px solid var(--gold-dark);margin-top:1rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer p{font-size:12px;color:rgba(255,255,255,0.4)}
+.footer-links{display:flex;gap:16px}
+.footer-links a{font-size:12px;color:rgba(207,185,145,0.5);text-decoration:none}
+.footer-links a:hover{color:var(--gold)}
+
+.tag{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:500}
+.tag-req{background:#FAEEDA;color:#633806}
+.tag-rec{background:#E6F1FB;color:#0C447C}
+.tag-opt{background:#EAF3DE;color:#27500A}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.info-box{background:var(--color-background-secondary);border-radius:8px;padding:1rem;border:0.5px solid var(--color-border-tertiary)}
+.info-box h4{font-size:13px;font-weight:500;margin-bottom:8px}
+.info-box p{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Purdue AI Certification Platform — annual AI literacy certification for students, professionals, and professors</h2>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">P</div>
+      <div>
+        <div class="logo-text">Purdue AI Certification</div>
+        <div class="logo-sub">Annual AI Literacy Program</div>
+      </div>
+    </div>
+    <div class="header-nav">
+      <a class="active" onclick="showView('home')">Home</a>
+      <a onclick="showView('modules')">Modules</a>
+      <a onclick="showView('tracks')">Tracks</a>
+      <a href="https://www.purdue.edu/teaching-learning/instructors/ai.php" target="_blank">Purdue AI Hub</a>
+      <span class="header-badge" onclick="showView('tracks')">Get certified</span>
+    </div>
+  </div>
+</header>
+
+<div id="view-home">
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">&#9670; Purdue University · West Lafayette · Official AI Program</div>
+      <h1>Your annual <span>AI certification</span> — one platform for everyone</h1>
+      <p>Whether you're a first-year student, a faculty member designing coursework, or a working professional staying current — complete your modules, pass the assessments, and earn a Purdue AI Literacy Certificate that renews each year.</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="showView('tracks')">Choose your track</button>
+        <button class="btn-outline" onclick="showView('modules')">Browse all modules</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="cert-preview">
+        <div class="cert-top">
+          <div class="cert-icon">&#127942;</div>
+          <div>
+            <div class="cert-title">Purdue AI Literacy Certificate</div>
+            <div class="cert-sub">Annual renewal · Digital badge · Verified</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:10px">Available tracks</div>
+        <div class="cert-tracks">
+          <span class="track-pill">&#127891; Students</span>
+          <span class="track-pill">&#128218; Professors</span>
+          <span class="track-pill">&#128188; Career professionals</span>
+          <span class="track-pill">&#128269; Researchers</span>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">8</div><div class="hstat-l">Core modules</div></div>
+        <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Cert tracks</div></div>
+        <div class="hstat"><div class="hstat-n">1yr</div><div class="hstat-l">Renewal cycle</div></div>
+        <div class="hstat"><div class="hstat-n">~6h</div><div class="hstat-l">Per track</div></div>
+        <div class="hstat"><div class="hstat-n">Free</div><div class="hstat-l">All Purdue community</div></div>
+        <div class="hstat"><div class="hstat-n">&#10003;</div><div class="hstat-l">Grad requirement</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="cert-section">
+    <h2>How the certification works</h2>
+    <div class="sub">Complete your track, pass module quizzes, earn your annual badge.</div>
+    <div class="cert-cards">
+      <div class="cert-card">
+        <div class="cc-badge">Step 1</div>
+        <div class="cc-icon">&#127775;</div>
+        <div class="cc-title">Choose your track</div>
+        <div class="cc-desc">Select the path that matches your role — student, professor, career professional, or researcher. Each track has tailored modules and a different emphasis.</div>
+      </div>
+      <div class="cert-card featured">
+        <div class="cc-featured-badge">Step 2</div>
+        <div class="cc-icon">&#128218;</div>
+        <div class="cc-title">Complete your modules</div>
+        <div class="cc-desc">Work through 5–8 modules at your own pace. Each covers a key AI literacy topic and ends with a short assessment. Progress is saved automatically.</div>
+      </div>
+      <div class="cert-card">
+        <div class="cc-badge">Step 3</div>
+        <div class="cc-icon">&#127942;</div>
+        <div class="cc-title">Earn & renew annually</div>
+        <div class="cc-desc">Pass all assessments to receive your digital Purdue AI Certificate. As AI evolves, renew every 12 months to stay current with updated content and policy.</div>
+        <div class="cc-renewal">&#8635; Renewal reminder sent 30 days before expiry</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-bottom:2rem">
+    <button class="btn-gold" onclick="showView('tracks')" style="margin-right:10px">Explore certification tracks</button>
+    <button class="btn-outline" onclick="showView('modules')">Browse modules</button>
+  </div>
+</div>
+</div>
+
+<div id="view-tracks" style="display:none">
+<div style="background:var(--black);padding:2rem;border-bottom:1px solid rgba(207,185,145,0.2)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Certification tracks</div>
+    <div style="font-size:24px;font-weight:500;color:#fff;margin-bottom:6px">Choose your path</div>
+    <div style="font-size:14px;color:rgba(255,255,255,0.5)">Each track is tailored to your role. All share a common core, then diverge into role-specific modules. Renewed annually.</div>
+  </div>
+</div>
+<div class="main">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-bottom:2rem">
+    <div style="background:var(--black);border:1.5px solid var(--gold);border-radius:12px;padding:1.5rem;cursor:pointer" onclick="selectTrack('student')">
+      <div style="font-size:11px;background:var(--gold);color:var(--black);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:500;margin-bottom:12px">Most popular</div>
+      <div style="font-size:28px;margin-bottom:10px">&#127891;</div>
+      <div style="font-size:17px;font-weight:500;color:#fff;margin-bottom:6px">Student track</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:12px">For undergraduate and graduate students. Covers AI basics, academic integrity, Purdue policy, and responsible use in coursework.</div>
+      <div style="font-size:12px;color:rgba(207,185,145,0.6)">8 modules · ~6 hours · Fulfills graduation AI competency</div>
+    </div>
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1.5rem;cursor:pointer" onclick="selectTrack('professor')">
+      <div style="font-size:11px;background:var(--color-background-secondary);color:var(--color-text-secondary);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:500;margin-bottom:12px">Faculty</div>
+      <div style="font-size:28px;margin-bottom:10px">&#128218;</div>
+      <div style="font-size:17px;font-weight:500;margin-bottom:6px">Professor track</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:12px">For faculty and instructors. Focuses on syllabus policy drafting, AI in pedagogy, detection tool limitations, and copyright.</div>
+      <div style="font-size:12px;color:var(--color-text-tertiary)">7 modules · ~5 hours · Satisfies faculty AI training requirement</div>
+    </div>
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1.5rem;cursor:pointer" onclick="selectTrack('professional')">
+      <div style="font-size:11px;background:var(--color-background-secondary);color:var(--color-text-secondary);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:500;margin-bottom:12px">Alumni & staff</div>
+      <div style="font-size:28px;margin-bottom:10px">&#128188;</div>
+      <div style="font-size:17px;font-weight:500;margin-bottom:6px">Career professional track</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:12px">For professionals in the workforce. Industry AI tools, workplace ethics, bias & fairness, and AI strategy for your field.</div>
+      <div style="font-size:12px;color:var(--color-text-tertiary)">6 modules · ~4.5 hours · Shareable LinkedIn credential</div>
+    </div>
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:12px;padding:1.5rem;cursor:pointer" onclick="selectTrack('researcher')">
+      <div style="font-size:11px;background:var(--color-background-secondary);color:var(--color-text-secondary);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:500;margin-bottom:12px">Research</div>
+      <div style="font-size:28px;margin-bottom:10px">&#128269;</div>
+      <div style="font-size:17px;font-weight:500;margin-bottom:6px">Researcher track</div>
+      <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:12px">For graduate researchers and faculty. AI in research workflows, data privacy (FERPA/IRB), publication ethics, and reproducibility.</div>
+      <div style="font-size:12px;color:var(--color-text-tertiary)">7 modules · ~5.5 hours · Covers IRB & data governance</div>
+    </div>
+  </div>
+  <div id="track-detail" style="display:none;background:var(--black);border:1px solid rgba(207,185,145,0.2);border-radius:12px;padding:1.5rem 2rem;margin-bottom:2rem">
+    <div id="track-detail-content"></div>
+  </div>
+</div>
+</div>
+
+<div id="view-modules" style="display:none">
+<div style="background:var(--black);padding:2rem;border-bottom:1px solid rgba(207,185,145,0.2)">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">All modules</div>
+    <div style="font-size:24px;font-weight:500;color:#fff;margin-bottom:6px">Learning modules</div>
+    <div style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:1.25rem">8 modules covering AI fundamentals to career readiness. Click any to expand full content.</div>
+    <div class="audience-tabs">
+      <button class="aud-tab active" onclick="filterAud('all',this)">All modules</button>
+      <button class="aud-tab" onclick="filterAud('student',this)">Student</button>
+      <button class="aud-tab" onclick="filterAud('professor',this)">Professor</button>
+      <button class="aud-tab" onclick="filterAud('professional',this)">Professional</button>
+      <button class="aud-tab" onclick="filterAud('researcher',this)">Researcher</button>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="renewal-banner">
+    <div class="renewal-left">
+      <div class="renewal-icon">&#8635;</div>
+      <div class="renewal-text">
+        <h3>Annual renewal required</h3>
+        <p>AI evolves fast. Certifications expire every 12 months — updated content reflects the latest tools, research, and Purdue policy changes.</p>
+      </div>
+    </div>
+    <span class="renewal-badge">Register for 2025–26 cohort</span>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="pb-header"><span class="pb-label">Your progress (student track)</span><span class="pb-pct" id="pct-text">0% complete</span></div>
+    <div class="pb-track"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div>
+    <div class="pb-modules" id="pb-modules">
+      <span class="pb-mod" id="pbm-0">01 AI basics</span>
+      <span class="pb-mod" id="pbm-1">02 Policy</span>
+      <span class="pb-mod" id="pbm-2">03 Dos &amp; don'ts</span>
+      <span class="pb-mod" id="pbm-3">04 Integrity</span>
+      <span class="pb-mod" id="pbm-4">05 Privacy</span>
+      <span class="pb-mod" id="pbm-5">06 Critical thinking</span>
+      <span class="pb-mod" id="pbm-6">07 Prompt skills</span>
+      <span class="pb-mod" id="pbm-7">08 Career</span>
+    </div>
+  </div>
+
+  <div class="modules-grid" id="modules-grid">
+    <div class="module-card" id="card-0" data-aud="all" onclick="openMod(0)">
+      <div class="mc-top"><div class="mc-icon">&#129302;</div><div><div class="mc-num">Module 01 · All tracks</div><div class="mc-title">Basics of AI & how LLMs work</div><div class="mc-desc">From machine learning fundamentals to why ChatGPT sometimes makes things up.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-0">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-1" data-aud="student professor" onclick="openMod(1)">
+      <div class="mc-top"><div class="mc-icon">&#128203;</div><div><div class="mc-num">Module 02 · Students &amp; faculty</div><div class="mc-title">Purdue AI policy (VII.A.5)</div><div class="mc-desc">What the November 2025 policy means for you, from data security to classroom rules.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-1">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-2" data-aud="all" onclick="openMod(2)">
+      <div class="mc-top"><div class="mc-icon">&#9989;</div><div><div class="mc-num">Module 03 · All tracks</div><div class="mc-title">Dos &amp; don'ts of AI use</div><div class="mc-desc">Practical guidelines for responsible AI use — across class, work, and research.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-2">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-3" data-aud="student professor" onclick="openMod(3)">
+      <div class="mc-top"><div class="mc-icon">&#127891;</div><div><div class="mc-num">Module 04 · Students &amp; faculty</div><div class="mc-title">Academic integrity &amp; AI</div><div class="mc-desc">Where the line is between legitimate use and a violation — with real scenarios.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-3">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-4" data-aud="all" onclick="openMod(4)">
+      <div class="mc-top"><div class="mc-icon">&#128274;</div><div><div class="mc-num">Module 05 · All tracks</div><div class="mc-title">Privacy, data security &amp; FERPA</div><div class="mc-desc">What you share when you use AI — and why protecting university data matters.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-4">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-5" data-aud="all" onclick="openMod(5)">
+      <div class="mc-top"><div class="mc-icon">&#129504;</div><div><div class="mc-num">Module 06 · All tracks</div><div class="mc-title">Critical thinking with AI</div><div class="mc-desc">How to evaluate AI output, fact-check hallucinations, and avoid over-reliance.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-5">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-6" data-aud="all" onclick="openMod(6)">
+      <div class="mc-top"><div class="mc-icon">&#9997;&#65039;</div><div><div class="mc-num">Module 07 · All tracks</div><div class="mc-title">Prompt engineering skills</div><div class="mc-desc">Write prompts that actually work — context, constraints, examples, and iteration.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-6">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+    <div class="module-card" id="card-7" data-aud="professional researcher professor" onclick="openMod(7)">
+      <div class="mc-top"><div class="mc-icon">&#128640;</div><div><div class="mc-num">Module 08 · Professional &amp; research</div><div class="mc-title">AI &amp; your career or research</div><div class="mc-desc">How AI is reshaping industries, research workflows, and what skills set you apart.</div></div></div>
+      <div class="mc-footer"><span class="mc-status" id="ms-7">Not started</span><span class="mc-link">Open module &#8594;</span></div>
+    </div>
+  </div>
+
+  <div id="panel-0" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#129302;</div><div><div class="ph-title">Basics of AI &amp; how LLMs work</div><div class="ph-sub">Module 01 · Foundational · All tracks</div></div></div>
+    <div class="panel-body">
+      <div class="ps">
+        <h3>What is artificial intelligence?</h3>
+        <p>AI refers to software that can perform tasks typically requiring human intelligence — understanding language, recognizing patterns, making decisions. Modern AI is powered by machine learning: systems learn from data rather than being explicitly programmed.</p>
+        <p>A <strong>Large Language Model (LLM)</strong> like ChatGPT, Claude, or Gemini is trained on hundreds of billions of words from the internet, books, and code. It learns to predict the most statistically probable next word — which is why it can write fluently, but also why it can state false things with complete confidence.</p>
+        <h3 style="margin-top:1rem">Types of AI you'll encounter</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128172;</span><span><strong>Generative AI</strong> — creates text, images, code, audio (ChatGPT, DALL-E, Suno, GitHub Copilot)</span></li>
+          <li><span class="ic">&#128269;</span><span><strong>Discriminative AI</strong> — classifies or detects (spam filters, fraud detection, medical imaging)</span></li>
+          <li><span class="ic">&#127918;</span><span><strong>Reinforcement learning</strong> — learns through trial and reward (robotics, game agents, AlphaGo)</span></li>
+          <li><span class="ic">&#128202;</span><span><strong>Predictive AI</strong> — forecasts based on patterns (recommendation systems, weather models)</span></li>
+        </ul>
+      </div>
+      <div class="ps">
+        <h3>How an LLM is built (simplified)</h3>
+        <ul class="ilist">
+          <li><span class="ic">1</span><span>Pre-training on massive text datasets — learns grammar, facts, reasoning patterns</span></li>
+          <li><span class="ic">2</span><span>Fine-tuning on curated instruction-following examples — learns to follow directions</span></li>
+          <li><span class="ic">3</span><span>RLHF (reinforcement learning from human feedback) — human raters improve safety and helpfulness</span></li>
+          <li><span class="ic">4</span><span>Deployment — API or consumer interface with guardrails and system prompts</span></li>
+        </ul>
+        <h3 style="margin-top:1rem">Key limitations to know</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#9888;&#65039;</span><span><strong>Hallucinations</strong> — the model generates plausible-sounding but factually wrong content</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span><strong>Knowledge cutoff</strong> — models don't know events after their training data ends</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span><strong>No memory</strong> — each conversation starts fresh unless memory tools are added</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span><strong>Bias</strong> — training data reflects human biases; outputs can replicate or amplify them</span></li>
+        </ul>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">Quick check: Why do LLMs sometimes produce confident but incorrect information (hallucinations)?</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',0)">They intentionally fabricate answers when uncertain</button>
+            <button class="qopt" onclick="ans(this,'correct',0)">They optimize for statistically probable text, not factual accuracy — there's no internal truth-checking mechanism</button>
+            <button class="qopt" onclick="ans(this,'wrong',0)">They access unreliable websites during the conversation</button>
+          </div>
+          <div class="qfb" id="qfb-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-1" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#128203;</div><div><div class="ph-title">Purdue AI policy (VII.A.5)</div><div class="ph-sub">Module 02 · Students &amp; faculty · Issued November 2025</div></div></div>
+    <div class="panel-body">
+      <div class="ps fullcol">
+        <div class="policy-block" style="margin-bottom:1rem">
+          <h4>Official policy — Volume VII.A.5 (November 1, 2025)</h4>
+          <p>Responsible use of Generative AI and Large Language Models is essential to Purdue's mission. AI tools and any university data entered into them are classified as IT Resources and Information Assets, subject to Purdue's Acceptable Use policy. The policy applies to all students, faculty, staff, contractors, and any parties accessing university systems — no exclusions.</p>
+        </div>
+      </div>
+      <div class="ps">
+        <h3>How classroom AI policy works</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#127979;</span><span>Authorization is set at the <strong>course level by the instructor</strong> — there is no single university-wide classroom rule</span></li>
+          <li><span class="ic">&#128196;</span><span>Your syllabus must state what is authorized vs unauthorized AI use for that course</span></li>
+          <li><span class="ic">&#9989;</span><span>If your syllabus is silent on AI, ask before using any AI tool for assessed work</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Consequences for unauthorized use must also be stated in the syllabus</span></li>
+        </ul>
+        <h3 style="margin-top:1rem">Approved tools at Purdue</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128274;</span><span><strong>Microsoft Copilot with Data Protection</strong> — approved, does not store or train on your data</span></li>
+          <li><span class="ic">&#128274;</span><span>Other Purdue IT-vetted tools may be approved per department</span></li>
+          <li><span class="ic">&#10060;</span><span>Consumer ChatGPT, Claude, Gemini — may store data; do not use with protected university information</span></li>
+        </ul>
+      </div>
+      <div class="ps">
+        <h3>Key obligations for students</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128274;</span><span>Never enter FERPA data, SSNs, or unpublished research into unapproved tools</span></li>
+          <li><span class="ic">&#128274;</span><span>Data you enter into external tools may become the provider's training data</span></li>
+          <li><span class="ic">&#127942;</span><span>AI working competency is now a <strong>graduation requirement</strong> across all Purdue programs (2025–26)</span></li>
+          <li><span class="ic">&#128081;</span><span>Purdue's Honor Pledge applies — commit to honesty and transparency in AI use</span></li>
+        </ul>
+        <h3 style="margin-top:1rem">Key obligations for faculty</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128196;</span><span>Must clearly state AI policy in the course syllabus before the semester starts</span></li>
+          <li><span class="ic">&#128064;</span><span>Must maintain a <strong>human in the loop</strong> for all AI-assisted grading or assessment</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>AI detection tools (Turnitin) have high false-positive rates — must not be the sole basis for an integrity charge</span></li>
+          <li><span class="ic">&#128274;</span><span>Must not share FERPA-protected student content with third-party AI tools without approval</span></li>
+        </ul>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">Under Purdue policy VII.A.5, who determines whether AI is authorized for a specific assignment?</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',1)">The Office of the Provost issues a uniform rule each semester</button>
+            <button class="qopt" onclick="ans(this,'correct',1)">The individual course instructor, who must state the policy clearly in the syllabus</button>
+            <button class="qopt" onclick="ans(this,'wrong',1)">Students may decide independently if the syllabus does not address AI</button>
+          </div>
+          <div class="qfb" id="qfb-1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-2" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#9989;</div><div><div class="ph-title">Dos &amp; don'ts of AI use</div><div class="ph-sub">Module 03 · All tracks · Practical guidelines</div></div></div>
+    <div class="panel-body">
+      <div class="ps fullcol">
+        <div class="dd-grid">
+          <div class="do-box">
+            <h4>&#10003; Do</h4>
+            <div class="ditem"><span>&#8594;</span><span>Use AI to brainstorm, outline ideas, or explore a concept from a different angle</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Verify every AI-generated fact with a primary or peer-reviewed source</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Disclose AI use when your syllabus, employer, or journal requires it</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Cite AI tools according to APA, MLA, or your field's citation guide</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Use AI to improve your grammar and structure — but review every suggestion yourself</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Ask AI to explain a concept in a different way when you're stuck</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Use Purdue-approved tools for any task involving university data</span></div>
+            <div class="ditem"><span>&#8594;</span><span>Treat AI like a very fast research assistant — useful but needs supervision</span></div>
+          </div>
+          <div class="dont-box">
+            <h4>&#10007; Don't</h4>
+            <div class="xitem"><span>&#8594;</span><span>Submit AI-generated text as your own original writing without explicit authorization</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Upload professor's slides, textbook PDFs, or copyrighted course materials to AI tools</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Trust AI output without fact-checking — models hallucinate plausibly and often</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Enter FERPA data, student records, SSNs, or confidential research into consumer AI</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Use AI on exams or assessments where it has been explicitly prohibited</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Pass off AI-generated code as your own in programming courses without disclosure</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Assume professors can't tell — AI detection is just one of many signals instructors use</span></div>
+            <div class="xitem"><span>&#8594;</span><span>Skip reading AI output before submitting — you are responsible for all content you turn in</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ps fullcol" style="margin-top:0.5rem">
+        <div class="quiz-wrap">
+          <div class="quiz-q">Scenario: You use Claude to draft an outline for your essay, then write all the paragraphs yourself. Your syllabus says "AI brainstorming tools are permitted but all written text must be original." Is this okay?</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'correct',2)">Yes — using AI for an outline only, then writing original text, is within the stated policy</button>
+            <button class="qopt" onclick="ans(this,'wrong',2)">No — any AI use for an essay is always a violation</button>
+            <button class="qopt" onclick="ans(this,'wrong',2)">Yes — and you don't need to disclose it since you wrote the text yourself</button>
+          </div>
+          <div class="qfb" id="qfb-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-3" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#127891;</div><div><div class="ph-title">Academic integrity &amp; AI</div><div class="ph-sub">Module 04 · Students &amp; faculty · Critical knowledge</div></div></div>
+    <div class="panel-body">
+      <div class="ps">
+        <h3>Purdue's academic integrity rule</h3>
+        <p>Purdue's student conduct code prohibits using unauthorized materials that give an unfair advantage. Unauthorized AI use is treated like copying a previous student's work — it is an academic dishonesty violation subject to formal consequences.</p>
+        <h3 style="margin-top:1rem">What counts as a violation?</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#9888;&#65039;</span><span>Submitting AI-generated writing as original work when the course syllabus does not authorize it</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Using AI to generate code, answers, or solutions on an individual assignment</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Paraphrasing AI output to disguise its origin</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Using AI during a closed-book exam or online quiz where prohibited</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Paying for or sharing AI-generated work between students</span></li>
+        </ul>
+        <h3 style="margin-top:1rem">Consequences</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128203;</span><span>Grade penalty — from a zero on the assignment to course failure</span></li>
+          <li><span class="ic">&#128203;</span><span>Referral to the Office of Student Rights and Responsibilities</span></li>
+          <li><span class="ic">&#128203;</span><span>Permanent record in the university's academic dishonesty database</span></li>
+          <li><span class="ic">&#128203;</span><span>Possible suspension or academic dismissal for repeated violations</span></li>
+        </ul>
+      </div>
+      <div class="ps">
+        <h3>AI detection — what you need to know</h3>
+        <p>Turnitin and similar tools have very high false-positive rates. Purdue guidance explicitly states that instructors must treat AI detection results with "extreme distrust" and must never use a positive result as the sole basis for an integrity charge.</p>
+        <div class="scenario-box" style="margin-top:1rem">
+          <h4>Real scenario: CS course</h4>
+          <p>A CS professor at Purdue now requires students to come to office hours and verbally explain their code. If you used AI to write it and can't explain how it works, that's a red flag — far more reliable than any detection tool. AI literacy includes being able to work alongside AI, not just copy from it.</p>
+        </div>
+        <h3 style="margin-top:1rem">The gray areas</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#9898;</span><span>Using AI to check grammar on your own writing — usually fine unless prohibited</span></li>
+          <li><span class="ic">&#9898;</span><span>Asking AI to explain a concept you're studying — generally encouraged</span></li>
+          <li><span class="ic">&#9898;</span><span>Using AI to generate a first draft that you then heavily rewrite — depends entirely on your syllabus</span></li>
+          <li><span class="ic">&#9898;</span><span>Citing AI-generated content as a source — not appropriate; AI is not a citable authority</span></li>
+        </ul>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">True or false: If Turnitin flags your paper as AI-generated, Purdue policy says that alone is sufficient evidence to charge you with an academic integrity violation.</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',3)">True — Turnitin is the official detection standard</button>
+            <button class="qopt" onclick="ans(this,'correct',3)">False — Purdue guidance says AI detectors have very high false-positive rates and must never be the sole basis for a charge</button>
+          </div>
+          <div class="qfb" id="qfb-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-4" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#128274;</div><div><div class="ph-title">Privacy, data security &amp; FERPA</div><div class="ph-sub">Module 05 · All tracks · Data protection</div></div></div>
+    <div class="panel-body">
+      <div class="ps">
+        <h3>Why this matters at a research university</h3>
+        <p>When you type into a consumer AI tool, that data may be stored by the provider, used to retrain the model, or shared in ways you didn't intend. At Purdue — home to billions of dollars in federally funded research — data leaks can have serious legal, financial, and reputational consequences.</p>
+        <h3 style="margin-top:1rem">What NEVER to enter into consumer AI</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128683;</span><span>Student records, grades, PUID numbers, or any FERPA-protected information</span></li>
+          <li><span class="ic">&#128683;</span><span>Unpublished research data, proprietary lab results, or grant-funded findings</span></li>
+          <li><span class="ic">&#128683;</span><span>Passwords, API keys, access credentials, or network configurations</span></li>
+          <li><span class="ic">&#128683;</span><span>Personally identifiable information — Social Security numbers, health records, financial data</span></li>
+          <li><span class="ic">&#128683;</span><span>Copyrighted course materials — lecture slides, textbook passages, professor's notes</span></li>
+          <li><span class="ic">&#128683;</span><span>IRB-protected human subjects data or identifiable participant information</span></li>
+        </ul>
+      </div>
+      <div class="ps">
+        <h3>Safe AI options at Purdue</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#9989;</span><span><strong>Microsoft Copilot with Data Protection</strong> — Purdue's 2024 deal with Microsoft ensures no chat storage, no training on your data</span></li>
+          <li><span class="ic">&#9989;</span><span>Check the Purdue IT acceptable use list before using any new AI tool for university work</span></li>
+          <li><span class="ic">&#9989;</span><span>Only use fully public or properly anonymized data with consumer tools</span></li>
+        </ul>
+        <h3 style="margin-top:1rem">Copyright &amp; AI</h3>
+        <p>Your professors hold copyright to how they express and present course material — not to underlying facts, but to their specific slides, notes, and explanations. Uploading those to a third-party AI tool is a Purdue policy violation and potentially a copyright infringement.</p>
+        <div class="info-box" style="margin-top:1rem">
+          <h4>For researchers specifically</h4>
+          <p>Pre-publication data, IRB protocols, and federally funded research results are especially sensitive. Check with your PI and the Purdue Research Office before using any AI tool in your research workflow.</p>
+        </div>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">You're working on a research project with IRB-approved survey data. You want to use AI to help analyze patterns. What is the safest approach?</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',4)">Upload the raw data to ChatGPT since it's for academic purposes</button>
+            <button class="qopt" onclick="ans(this,'correct',4)">Consult your PI, anonymize or aggregate the data first, and use only Purdue-approved AI tools</button>
+            <button class="qopt" onclick="ans(this,'wrong',4)">It's fine as long as you delete the conversation after</button>
+          </div>
+          <div class="qfb" id="qfb-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-5" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#129504;</div><div><div class="ph-title">Critical thinking with AI</div><div class="ph-sub">Module 06 · All tracks · Essential skill</div></div></div>
+    <div class="panel-body">
+      <div class="ps">
+        <h3>Why critical thinking matters more with AI</h3>
+        <p>AI produces text that sounds authoritative, polished, and certain — even when it's wrong. Studies show people are more likely to believe AI-generated content even when it contains errors. Critical AI literacy means knowing how to interrogate output, not just use it.</p>
+        <h3 style="margin-top:1rem">A checklist for evaluating AI output</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128269;</span><span>Can you find the claim in a primary source? If not, treat it as unverified.</span></li>
+          <li><span class="ic">&#128269;</span><span>Does the AI cite a specific source? Go look it up — citations are often fabricated.</span></li>
+          <li><span class="ic">&#128269;</span><span>Is the date important? AI has a knowledge cutoff and may not know recent events.</span></li>
+          <li><span class="ic">&#128269;</span><span>Does the answer feel "too perfect"? AI optimizes for plausibility, not truth.</span></li>
+          <li><span class="ic">&#128269;</span><span>Have you asked a follow-up or challenged the answer? Probe it.</span></li>
+        </ul>
+      </div>
+      <div class="ps">
+        <h3>Recognizing AI bias</h3>
+        <p>AI models are trained on human-generated text, which reflects human biases — cultural, historical, political, demographic. This means AI output can underrepresent certain groups, over-index on certain perspectives, or produce stereotyped characterizations.</p>
+        <ul class="ilist">
+          <li><span class="ic">&#9888;&#65039;</span><span>Ask the same question multiple ways — look for inconsistency in representation</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Be especially skeptical in social science, history, or policy contexts</span></li>
+          <li><span class="ic">&#9888;&#65039;</span><span>Don't let AI be the only voice in research on marginalized groups or contested topics</span></li>
+        </ul>
+        <div class="scenario-box" style="margin-top:1rem">
+          <h4>Practice: the "two-source rule"</h4>
+          <p>For any factual claim from AI that you plan to use in coursework or a professional document, require yourself to find at least two independent non-AI sources that confirm it before including it.</p>
+        </div>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">An AI tool gives you a citation: "Smith, J. (2022). Machine learning in healthcare. Nature Medicine, 28(4), 112–119." What should you do before using it?</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',5)">Use it — AI citations are generally reliable</button>
+            <button class="qopt" onclick="ans(this,'correct',5)">Look up the exact citation in PubMed or the journal's website — AI frequently fabricates specific citation details</button>
+            <button class="qopt" onclick="ans(this,'wrong',5)">Paraphrase it so it's less obvious you got it from AI</button>
+          </div>
+          <div class="qfb" id="qfb-5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-6" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#9997;&#65039;</div><div><div class="ph-title">Prompt engineering skills</div><div class="ph-sub">Module 07 · All tracks · Practical skill</div></div></div>
+    <div class="panel-body">
+      <div class="ps">
+        <h3>What is a prompt?</h3>
+        <p>A prompt is the instruction you give an AI. The quality of your output depends heavily on how well you write your prompt. Vague prompts produce vague answers; specific, structured prompts produce useful, targeted results.</p>
+        <h3 style="margin-top:1rem">The anatomy of a good prompt</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#127775;</span><span><strong>Role</strong> — tell the AI who it is: "You are an expert in environmental law..."</span></li>
+          <li><span class="ic">&#127775;</span><span><strong>Task</strong> — be specific about exactly what you want done</span></li>
+          <li><span class="ic">&#127775;</span><span><strong>Context</strong> — give relevant background: audience, purpose, constraints</span></li>
+          <li><span class="ic">&#127775;</span><span><strong>Format</strong> — specify structure: "respond in bullet points," "keep it under 200 words"</span></li>
+          <li><span class="ic">&#127775;</span><span><strong>Examples</strong> — show a sample of what good output looks like</span></li>
+        </ul>
+        <div class="info-box" style="margin-top:1rem">
+          <h4>Weak vs strong prompt</h4>
+          <p>Weak: "Tell me about climate change." — Strong: "Explain the top 3 mechanisms by which climate change affects agricultural yields in the US Midwest, in language suitable for a non-science undergraduate. Include one data point per mechanism."</p>
+        </div>
+      </div>
+      <div class="ps">
+        <h3>Advanced prompt techniques</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128161;</span><span><strong>Chain-of-thought</strong> — add "think step by step" to improve reasoning accuracy on complex problems</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Few-shot</strong> — give 2–3 examples of input/output pairs before your actual request</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Negative constraints</strong> — tell AI what to avoid: "do not use jargon," "do not include speculation"</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Iteration</strong> — treat the first output as a draft; refine with follow-up prompts</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Persona prompting</strong> — "Act as a skeptical editor and find weaknesses in this argument"</span></li>
+        </ul>
+        <h3 style="margin-top:1rem">Prompting for different roles</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#127891;</span><span><strong>Students</strong> — "Explain this concept to me like I'm a curious sophomore, then quiz me on it"</span></li>
+          <li><span class="ic">&#128218;</span><span><strong>Professors</strong> — "Generate 5 discussion questions on this topic at different Bloom's taxonomy levels"</span></li>
+          <li><span class="ic">&#128188;</span><span><strong>Professionals</strong> — "Summarize this report into 3 executive bullet points and flag any risks"</span></li>
+        </ul>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">Which prompt is most likely to produce a useful, specific result from an AI?</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',6)">Write me an essay about renewable energy.</button>
+            <button class="qopt" onclick="ans(this,'correct',6)">You are an energy policy analyst. Write a 300-word summary of the economic trade-offs of solar vs wind energy for a US state government audience, using plain language and no jargon.</button>
+            <button class="qopt" onclick="ans(this,'wrong',6)">Tell me everything about solar energy.</button>
+          </div>
+          <div class="qfb" id="qfb-6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel-7" class="panel">
+    <div class="panel-hero"><div class="ph-icon">&#128640;</div><div><div class="ph-title">AI &amp; your career or research</div><div class="ph-sub">Module 08 · Professional, researcher &amp; faculty tracks</div></div></div>
+    <div class="panel-body">
+      <div class="ps">
+        <h3>Why Purdue requires AI literacy to graduate</h3>
+        <p>Starting 2025–26, Purdue requires demonstrated AI working competency for graduation across all programs. No extra credits are needed — it is embedded in existing coursework. This reflects the reality that virtually every career will involve AI tools within the next decade.</p>
+        <h3 style="margin-top:1rem">Skills that employers value</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128161;</span><span><strong>Prompt engineering</strong> — writing effective, efficient instructions for AI systems</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Critical evaluation</strong> — knowing when to trust AI output and when to override it</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Workflow integration</strong> — embedding AI tools into real processes without creating new risks</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Responsible use</strong> — bias awareness, privacy compliance, and ethical deployment</span></li>
+          <li><span class="ic">&#128161;</span><span><strong>Human-AI collaboration</strong> — contributing the judgment, creativity, and accountability AI cannot</span></li>
+        </ul>
+      </div>
+      <div class="ps">
+        <h3>How AI is reshaping majors at Purdue</h3>
+        <ul class="ilist">
+          <li><span class="ic">&#128187;</span><span><strong>CS / Engineering</strong> — GitHub Copilot is standard; professors now require verbal code walk-throughs</span></li>
+          <li><span class="ic">&#128138;</span><span><strong>Nursing / Health sciences</strong> — AI in diagnostics and documentation; clinical judgment remains irreplaceable</span></li>
+          <li><span class="ic">&#128200;</span><span><strong>Business / Economics</strong> — AI for data analysis, report drafting, market research, and financial modeling</span></li>
+          <li><span class="ic">&#128221;</span><span><strong>Humanities / Social sciences</strong> — AI as research assistant; original argument and human voice are the value-add</span></li>
+          <li><span class="ic">&#128300;</span><span><strong>Research / Graduate</strong> — AI for literature review, data processing, code, and hypothesis generation</span></li>
+        </ul>
+        <div class="info-box" style="margin-top:1rem">
+          <h4>Certification on your resume</h4>
+          <p>Your Purdue AI Literacy Certificate is a shareable digital credential. Career professionals can display it on LinkedIn. The annual renewal signals to employers that your AI skills are current — not from a one-time 2023 course.</p>
+        </div>
+      </div>
+      <div class="ps fullcol">
+        <div class="quiz-wrap">
+          <div class="quiz-q">Purdue's AI graduation competency requirement means students must…</div>
+          <div class="quiz-opts">
+            <button class="qopt" onclick="ans(this,'wrong',7)">Complete a separate 3-credit AI course before graduating</button>
+            <button class="qopt" onclick="ans(this,'correct',7)">Demonstrate working AI competency — embedded in existing programs with no extra credits required</button>
+            <button class="qopt" onclick="ans(this,'wrong',7)">Pass a university-wide written AI exam administered each semester</button>
+          </div>
+          <div class="qfb" id="qfb-7"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resources-section">
+    <div class="section-eyebrow">Resources</div>
+    <div class="section-title">Helpful links</div>
+    <div class="res-grid">
+      <a class="res-pill" href="https://www.purdue.edu/vpec/policies/information-technology/viia5/" target="_blank"><span class="ri">&#128203;</span> Purdue AI Policy VII.A.5</a>
+      <a class="res-pill" href="https://www.purdue.edu/teaching-learning/instructors/ai.php" target="_blank"><span class="ri">&#127979;</span> AI Teaching Guidance</a>
+      <a class="res-pill" href="https://apastyle.apa.org/blog/how-to-cite-chatgpt" target="_blank"><span class="ri">&#128221;</span> How to cite AI (APA)</a>
+      <a class="res-pill" href="https://www.purdue.edu/odos/osrr/" target="_blank"><span class="ri">&#9878;&#65039;</span> Student Rights &amp; Responsibilities</a>
+      <a class="res-pill" href="https://it.purdue.edu/" target="_blank"><span class="ri">&#128187;</span> Purdue IT &amp; approved tools</a>
+      <a class="res-pill" href="https://www.purdue.edu/honors/" target="_blank"><span class="ri">&#128081;</span> Purdue Honor Pledge</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Purdue AI Certification · Annual renewal program · Based on Purdue University policy documents 2024–2025 · Not an official Purdue publication</p>
+    <div class="footer-links">
+      <a href="https://www.purdue.edu/policies/" target="_blank">University policies</a>
+      <a href="https://www.purdue.edu/teaching-learning/instructors/ai.php" target="_blank">AI guidance</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const completed=new Set();
+const totalMods=8;
+const fb=[
+  {c:"Correct! LLMs optimize for statistically probable text. There is no internal truth-checking — hence confident hallucinations.",w:"Not quite. Hallucinations come from text prediction without a truth-checking mechanism, not from intentional deception."},
+  {c:"Correct! Purdue delegates AI authorization to individual course instructors, who must state their policy in the syllabus.",w:"Not quite. Purdue's policy gives authorization authority to individual course instructors — check your syllabus."},
+  {c:"Correct! This is allowed under a policy permitting AI brainstorming. Always read your specific syllabus and disclose when required.",w:"Not quite. The answer depends entirely on your syllabus. Always read and follow course-specific AI policy."},
+  {c:"Correct! Purdue guidance explicitly warns instructors to treat AI detection results with 'extreme distrust' — high false-positive rates make them unreliable alone.",w:"Not quite. Purdue guidance says AI detectors like Turnitin have very high false-positive rates and cannot be the sole basis for a violation charge."},
+  {c:"Correct! IRB-protected data requires anonymization and use of approved tools. Always consult your PI before using AI in research workflows.",w:"Not quite. IRB-protected data is sensitive — always anonymize, consult your PI, and use only Purdue-approved AI tools."},
+  {c:"Correct! AI frequently fabricates specific citation details — author names, journal volumes, page numbers. Always verify every citation independently.",w:"Not quite. AI frequently fabricates citation details that look real but don't exist. Always verify in the actual journal or database."},
+  {c:"Correct! The second prompt defines a role, task, audience, length, and format constraints — all elements of a strong prompt.",w:"Not quite. Specific prompts with defined roles, audiences, formats, and constraints consistently outperform vague open-ended ones."},
+  {c:"Correct! No extra credits are required — AI competency is embedded in existing programs and demonstrated through coursework.",w:"Not quite. Purdue confirmed no extra credits are required; AI competency is woven into existing course requirements."}
+];
+
+function ans(btn,result,idx){
+  const parent=btn.closest('.quiz-opts');
+  parent.querySelectorAll('.qopt').forEach(b=>{b.disabled=true});
+  btn.classList.add(result);
+  const fbEl=document.getElementById('qfb-'+idx);
+  fbEl.textContent=result==='correct'?fb[idx].c:fb[idx].w;
+  fbEl.className='qfb show '+(result==='correct'?'ok':'bad');
+  if(result==='correct'&&!completed.has(idx)){
+    completed.add(idx);
+    document.getElementById('ms-'+idx).textContent='Completed';
+    document.getElementById('ms-'+idx).style.background='#EAF3DE';
+    document.getElementById('ms-'+idx).style.color='#27500A';
+    document.getElementById('pbm-'+idx).classList.add('done');
+    const pct=Math.round((completed.size/totalMods)*100);
+    document.getElementById('pb-fill').style.width=pct+'%';
+    document.getElementById('pct-text').textContent=pct+'% complete';
+  }
+}
+
+const panels=[0,1,2,3,4,5,6,7];
+function openMod(idx){
+  panels.forEach(i=>{
+    document.getElementById('panel-'+i).classList.remove('visible');
+    document.getElementById('card-'+i)?.classList.remove('active');
+  });
+  const p=document.getElementById('panel-'+idx);
+  p.classList.add('visible');
+  document.getElementById('card-'+idx)?.classList.add('active');
+  p.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showView(v){
+  ['home','tracks','modules'].forEach(id=>{
+    const el=document.getElementById('view-'+id);
+    if(el)el.style.display=id===v?'block':'none';
+  });
+  document.querySelectorAll('.header-nav a').forEach(a=>a.classList.remove('active'));
+}
+
+function filterAud(aud,btn){
+  document.querySelectorAll('.aud-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.module-card').forEach(c=>{
+    const d=c.getAttribute('data-aud')||'all';
+    c.style.display=(aud==='all'||d==='all'||d.includes(aud))?'':'none';
+  });
+}
+
+const trackContent={
+  student:`<div style="color:#fff"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem"><div><div style="font-size:18px;font-weight:500;margin-bottom:4px">&#127891; Student track — 8 modules</div><div style="font-size:13px;color:rgba(207,185,145,0.6)">Fulfills Purdue graduation AI competency requirement · Renewable annually</div></div><button class="btn-gold" onclick="showView('modules')" style="flex-shrink:0">Start learning</button></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Required modules</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">01 Basics of AI<br>02 Purdue policy<br>03 Dos &amp; don'ts<br>04 Academic integrity<br>05 Privacy &amp; data</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Also included</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">06 Critical thinking<br>07 Prompt skills<br>08 AI &amp; your career</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Certification</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">Digital badge<br>Transcript notation<br>Renewal: annual</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Time commitment</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">~6 hours total<br>Self-paced<br>Progress saved</div></div></div></div>`,
+  professor:`<div style="color:#fff"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem"><div><div style="font-size:18px;font-weight:500;margin-bottom:4px">&#128218; Professor track — 7 modules</div><div style="font-size:13px;color:rgba(207,185,145,0.6)">Satisfies faculty AI training requirement · Annual policy update included</div></div><button class="btn-gold" onclick="showView('modules')" style="flex-shrink:0">Start learning</button></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Core modules</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">01 Basics of AI<br>02 Purdue policy<br>03 Dos &amp; don'ts<br>04 Academic integrity<br>05 Privacy &amp; FERPA</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Faculty-specific</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">Syllabus policy writing<br>AI in pedagogy<br>Detection tool limits<br>Grading with AI</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Certification</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">Digital badge<br>Faculty record<br>Renewal: annual</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Time commitment</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">~5 hours total<br>Self-paced<br>Policy updates auto</div></div></div></div>`,
+  professional:`<div style="color:#fff"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem"><div><div style="font-size:18px;font-weight:500;margin-bottom:4px">&#128188; Career professional track — 6 modules</div><div style="font-size:13px;color:rgba(207,185,145,0.6)">Shareable LinkedIn credential · Industry-focused · Annual renewal</div></div><button class="btn-gold" onclick="showView('modules')" style="flex-shrink:0">Start learning</button></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Core modules</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">01 Basics of AI<br>03 Dos &amp; don'ts<br>05 Privacy &amp; security<br>06 Critical thinking</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Professional focus</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">07 Prompt skills<br>08 AI &amp; your career<br>Workplace AI ethics<br>Industry tools</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Certification</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">Digital badge<br>LinkedIn ready<br>Renewal: annual</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Time commitment</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">~4.5 hours total<br>Self-paced<br>Mobile friendly</div></div></div></div>`,
+  researcher:`<div style="color:#fff"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem"><div><div style="font-size:18px;font-weight:500;margin-bottom:4px">&#128269; Researcher track — 7 modules</div><div style="font-size:13px;color:rgba(207,185,145,0.6)">Covers IRB, data governance, and research reproducibility · Annual renewal</div></div><button class="btn-gold" onclick="showView('modules')" style="flex-shrink:0">Start learning</button></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Core modules</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">01 Basics of AI<br>03 Dos &amp; don'ts<br>05 Privacy &amp; FERPA<br>06 Critical thinking</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Research-specific</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">AI in research workflows<br>IRB &amp; human subjects<br>Publication ethics<br>Reproducibility</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Certification</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">Digital badge<br>Research record<br>Renewal: annual</div></div><div style="background:rgba(207,185,145,0.1);border-radius:8px;padding:12px"><div style="font-size:12px;color:var(--gold);font-weight:500;margin-bottom:4px">Time commitment</div><div style="font-size:13px;color:rgba(255,255,255,0.6)">~5.5 hours total<br>Self-paced<br>Dept. record kept</div></div></div></div>`
+};
+
+function selectTrack(t){
+  const d=document.getElementById('track-detail');
+  const c=document.getElementById('track-detail-content');
+  c.innerHTML=trackContent[t];
+  d.style.display='block';
+  d.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+</script>
